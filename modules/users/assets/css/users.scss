@@ -1,0 +1,102 @@
+.modal_login{
+	.modal-content {
+	    border: 10px solid rgba(112,112,112,0.2);
+	    box-shadow: none;
+	    border-radius: 0;
+	    width: 500px;
+	    margin: 0 auto;
+	    .modal-header{
+    	    padding: 0;
+		    border-bottom: none;
+		    min-height: 0;
+			.close {
+			    background: url("../images/icon_close.png") no-repeat scroll 0 0;
+		        text-indent: -9999px;
+		        height: 40px;
+			    width: 40px;
+			    position: absolute;
+			    right: -20px;
+			    top: -10px;
+			    opacity: 1;
+			}
+			
+		}
+		.modal-body{
+			padding: 15px 50px;
+			._tabs {
+			 	li{
+			 		a {
+						font-family: MyriadPro-Regular;
+						font-size: 18px;
+						padding: 10px 0;
+						border: none;
+						margin-right: 50px;
+						&:hover {
+							background: none;
+							border-color: #fff;
+							border: none;
+						}
+					}
+					&.active{
+						a,
+						a:hover,
+						a:focus{
+							border: none;
+							border-bottom: 2px solid #FF8B00;
+							background-color: transparent;
+							color: #FF8B00;
+						}
+
+					}
+				}
+			}
+			
+
+			p{
+				
+				.txt_input{
+					width: 100%;
+				    border: 1px solid #D3D3D3;
+				    height: 35px;
+				    line-height: 35px;
+				    padding-left: 10px;
+				    box-shadow: 0 0 2px #D3D3D3 inset;
+				    outline: none;
+				    &#txtCaptcha{
+				    	width: 165px;
+				    	float: left;
+				    	margin-right:10px;
+				    }
+				}
+				._btn_register{
+					background: none repeat scroll 0 0 #f38400;
+					border: 1px solid #f38400;
+					font-family: MyriadPro-Regular;
+					font-size: 16px;
+					text-transform: uppercase;
+					width: 100%;	
+				    color: #fff;
+    				padding: 10px;		
+				}
+				 .social-login-btn {
+					border-radius: 24px;
+					font-size: 20px;
+					height: 30px;
+					margin: 5px;
+					padding: 4px 0 0 2px;
+					text-align: center;
+					width: 30px;
+					&.social-facebook {
+						background-color: #4c699e;
+						border-color: #47618d;
+					}
+					&.social-google {
+						background-color: #da573b;
+						border-color: #be5238;
+					}
+				}
+			}
+		}
+	}
+}
+#fname,#mname,#lname{width:80px;}.form-title h1{background:url("../images/register.jpg") no-repeat scroll left center transparent;}.form-body form.register_form{width:998px;}.login_area{float:left;width:397px;}.login_area_inner{margin:23px 22px;float:left;display:block;clear:both;}.login_area_inner_t_l{height:3px;width:100%;background:url("../images/login-t-l.png") no-repeat scroll left top transparent;}.login_area_inner_t_r{height:3px;width:100%;background:url("../images/login-t-r.png") no-repeat scroll right top transparent;}.login_area_inner_t_c{border-top:1px solid #d5d5d5;margin:0 4px;}.login_area_inner_c{border-left:1px solid #d5d5d5;border-right:1px solid #d5d5d5;background:none repeat scroll 0 0 #f9f9f9;width:351px;float:left;padding-bottom:10px;display:inline;}.login_area_inner_t,.login_area_inner_b{width:353px;float:left;height:3px;display:block;overflow:visible;}.register_area{float:left;width:100%;}.register_area_inner{background:none repeat scroll 0 0 #eaeaea;border:1px solid #fff;padding:1px;}.person_login_info{color:#6d6d6d;float:right;width:550px;padding:10px 0;overflow:hidden}.person_login_info p{padding-left:30px;}.person_login_info .info-head{color:#e97d13;font-size:15px;font-weight:bold;}.person_login_info .info-title{background:url("../images/info-title.jpg") no-repeat scroll left center transparent;font-size:13px;font-weight:bold;}.login_area_inner_c table{line-height:34px;margin:10px 20px 0px 20px;}.login_area_inner_c table span{line-height:18px;}.login_area_inner_c table td.label{line-height:inherit;padding:0px;text-align:left;width:120px;}.login_area input.txtinput{width:143px;}.login_area_inner_c table td a{color:#6d6d6d;}.login_area_inner_c table td a:hover{}#login-form .form-body{width:1000px;}.login_area_inner_b_l{height:3px;width:100%;background:url("../images/login-b-l.png") no-repeat scroll left bottom transparent;}.login_area_inner_b_r{height:3px;width:100%;background:url("../images/login-b-r.png") no-repeat scroll right bottom transparent;}.login_area_inner_b_c{border-bottom:1px solid #d5d5d5;margin:0 4px;height:2px;}p.alert{color:red;font-size:13px;}#referrer_name{font-size:14px;font-weight:bold;}.register_bt{float:left;height:37px;padding:32px 18px 0;width:195px;}.person_regiter_info{color:#616161;padding:0 10px;text-align:justify;}.person_regiter_info p.title{color:#3188e7;font-weight:bold;}.commission_base,.commission_person,.commission_manage,.commission_leadership,.introduce_commission,.passive_commission{float:left;width:100%;margin-bottom:20px;}

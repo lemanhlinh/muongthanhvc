@@ -14,14 +14,21 @@ echo ' 	<div class="alert alert-danger" style="display:none" >
 $this->dt_form_begin(1, 4, $title . ' ' . FSText::_('user'));
 
 TemplateHelper::dt_edit_text(FSText :: _('Tên đăng nhập'), 'username', @$data->username, '', 50);
-//TemplateHelper::dt_edit_text(FSText :: _('Alias'),'alias',@$data -> alias,'',60,1,0,FSText::_("Can auto generate"));
-//TemplateHelper::dt_edit_image(FSText :: _('Image'),'image',str_replace('/original/','/original/',URL_ROOT.@$data->image),'120');
 TemplateHelper::dt_edit_text(FSText :: _('Họ và tên'), 'full_name', @$data->full_name, '', 50);
 TemplateHelper::dt_edit_text(FSText :: _('Email'), 'email', @$data->email, '', 50);
 TemplateHelper::dt_edit_text(FSText :: _('Điện thoại'), 'phone', @$data->phone);
 TemplateHelper::dt_edit_text(FSText :: _('Address'), 'address', @$data->address, '', 50);
 TemplateHelper::dt_edit_image(FSText :: _('Ảnh avatar'),'image',@$data -> image);
-TemplateHelper::dt_edit_text(FSText :: _('Giới thiệu tác giả'),'summary',@$data -> summary,'','','20',1,'Nội dung giới thiệu tác giả ở cuối bài Tin tức','','col-md-3','col-md-9','','1');
+TemplateHelper::dt_edit_selectbox(FSText::_('Nhóm'),'group_company',@$data->group_company,0,GROUP_COMPANY,$field_value = 'id', $field_label='group_name',$size = 1,0);
+if (@$data->group_company == 1){
+    TemplateHelper::dt_edit_selectbox(FSText::_('Phòng ban'),'position_group',@$data->position_group,0,POSITION_GROUP_1);
+}else if (@$data->group_company == 2){
+    TemplateHelper::dt_edit_selectbox(FSText::_('Phòng ban'),'position_group',@$data->position_group,0,POSITION_GROUP_2);
+}else{
+    TemplateHelper::dt_edit_selectbox(FSText::_('Phòng ban'),'position_group',@$data->position_group,0);
+}
+TemplateHelper::dt_edit_text(FSText :: _('Tên Phòng ban'), 'position_group_name', @$data->position_group_name,'',255,1,0,'Nếu chọn Phòng ban khác');
+//TemplateHelper::dt_edit_text(FSText :: _('Giới thiệu tác giả'),'summary',@$data -> summary,'','','20',1,'Nội dung giới thiệu tác giả ở cuối bài Tin tức','','col-md-3','col-md-9','','1');
 TemplateHelper::dt_checkbox(FSText::_('Published'), 'published', @$data->published, 1);
 
 TemplateHelper::dt_checkbox(@$data->id ? FSText::_('Sửa password') : FSText::_('Password'), 'edit_pass', @$data->id ? 0 : 1, 0);
@@ -47,6 +54,24 @@ $this->dt_form_end(@$data, 1, 0);
     $(document).ready(function () {
         check_exist_username();
         check_exist_email();
+
+        $("#group_company").change(function(){
+            var options = '';
+           if (this.value == 1){
+               <?php foreach (POSITION_GROUP_1 as $k => $item){ ?>
+               options += '<option value="<?php echo $k; ?>"><?php echo $item; ?></option>';
+               <?php } ?>
+           }else if(this.value == 2){
+               <?php foreach (POSITION_GROUP_2 as $k => $item){ ?>
+               options += '<option value="<?php echo $k; ?>"><?php echo $item; ?></option>';
+               <?php } ?>
+           }else {
+               options += '<option value="">Phòng ban</option>';
+           }
+            $('#position_group').html(options);
+            $("#position_group").trigger("chosen:updated");
+        });
+
     });
 
     $('.form-horizontal').keypress(function (e) {
@@ -89,6 +114,13 @@ $this->dt_form_end(@$data, 1, 0);
         }
 
         if (!lengthMax("phone", 12, 'Số điện thoại không hợp lệ')) {
+            return false;
+        }
+
+        if (!notEmpty("group_company", 'Hãy chọn nhóm')) {
+            return false;
+        }
+        if (!notEmpty("position_group", 'Hãy chọn phòng ban')) {
             return false;
         }
 

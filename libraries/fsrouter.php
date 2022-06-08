@@ -122,201 +122,25 @@ class FSRoute
         $url1 = '';
         $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
         switch ($module) {
-            case 'api':
+            case 'vouchers':
                 switch ($view) {
-                    case 'order':
+                    case 'vouchers':
                         switch ($task) {
-                            case 'update_deals':
-                                return $url_first . FSRoute::get_name_encode('update_bitrix_deals$', $lang);
-                        }
-                    case 'product':
-                        switch ($task) {
-//                            case 'log':
-//                                return $url_first . FSRoute::get_name_encode('log', $lang);
-//                            default:
-//                                return URL_ROOT . FSRoute::get_name_encode('trang-ca-nhan', $lang);
-                        }
-                }
-                break;
-            case 'members':
-                switch ($view) {
-                    case 'facebook':
-                        switch ($task) {
-                            case 'face_login':
-                                return $url_first . FSRoute::get_name_encode('login-face', $lang);
-                        }
-                    case 'google':
-                        switch ($task) {
-                            case 'google_login':
-                                return $url_first . FSRoute::get_name_encode('oauth2callback', $lang);
-                        }
-                    case 'members':
-                        switch ($task) {
-                            case 'log':
-                                return $url_first . FSRoute::get_name_encode('log', $lang);
-                            case 'reg':
-                                return $url_first . FSRoute::get_name_encode('reg', $lang);
-                            case 'login':
-                                return $url_first . FSRoute::get_name_encode('account/login', $lang);
-                            case 'register':
-                                return $url_first . FSRoute::get_name_encode('account/register', $lang);
-                            case 'logout':
-                                return $url_first . FSRoute::get_name_encode('dang-xuat', $lang);
-                            case 'forgot':
-                                return $url_first . FSRoute::get_name_encode('quen-mat-khau', $lang);
-                            case 'change_pass':
-                                return $url_first . FSRoute::get_name_encode('doi-mat-khau', $lang);
-                            case 'activate':
-                                $mail = isset($array_params['mail']) ? $array_params['mail'] : '';
-                                $code = isset($array_params['code']) ? $array_params['code'] : '';
-                                return $url_first . 'activate-' . $mail .'-'.$code;
-                            case 'like':
-                                return URL_ROOT . FSRoute::get_name_encode('san-pham-yeu-thich', $lang);
-                            case 'buy':
-                                return URL_ROOT . FSRoute::get_name_encode('san-pham-da-mua', $lang);
-                            case 'address':
-                                return URL_ROOT . FSRoute::get_name_encode('so-dia-chi', $lang);
-                            case 'add_address':
-                                return URL_ROOT . FSRoute::get_name_encode('chinh-sua-dia-chi', $lang);
-                            case 'order':
-                                return URL_ROOT . FSRoute::get_name_encode('quan-ly-don-hang', $lang);
-                            case 'remove_wish_list':
-                                $id = isset($array_params['id']) ? $array_params['id'] : 0;
-                                return $url_first . 'remove-favorite-product-' . $id;
-                            default:
-                                return URL_ROOT . FSRoute::get_name_encode('trang-ca-nhan', $lang);
+                            case 'create':
+                                return $url_first . FSRoute::get_name_encode('de-xuat-phat-hanh', $lang);
+                            case 'approve_waiting':
+                                return $url_first . FSRoute::get_name_encode('vouchers-cho-phe-duyet', $lang);
+                            case 'approve':
+                                return $url_first . FSRoute::get_name_encode('vouchers-da-duyet', $lang);
+                            case 'expired':
+                                return $url_first . FSRoute::get_name_encode('vouchers-het-han', $lang);
+                            case 'return_voucher':
+                                return $url_first . FSRoute::get_name_encode('vouchers-tra-ve', $lang);
+                            case 'no_approve':
+                                return $url_first . FSRoute::get_name_encode('vouchers-khong-duyet', $lang);
                         }
                     default:
-                        return URL_ROOT . $url;
-                }
-                break;
-            case 'contact':
-                return $url_first . 'he-thong-cua-hang';
-            case 'connect':
-                return $url_first . 'lien-he';
-            case 'points':
-                return $url_first . 'tich-diem-thanh-vien';
-            case 'autumn':
-                return $url_first . 'thu-cu-doi-moi';
-            case 'products':
-                switch ($view) {
-                    case 'amp_product':
-                        $code = isset($array_params['code']) ? $array_params['code'] : '';
-                        $ccode = isset($array_params['ccode']) ? $array_params['ccode'] : '';
-                        $id = isset($array_params['id']) ? $array_params['id'] : '';
-                        return $url_first . 'amp/' . $code . '-' . FSRoute::get_name_encode('p', $lang) . $id . '.html';
-                    case 'product':
-                        if ($task == 'display' || $task == '') {
-                            $code = isset($array_params['code']) ? $array_params['code'] : '';
-                            $ccode = isset($array_params['ccode']) ? $array_params['ccode'] : '';
-                            $id = isset($array_params['id']) ? $array_params['id'] : '';
-                            foreach ($array_params as $key => $value) {
-                                if ($key == 'module' || $key == 'view' || $key == 'Itemid' || $key == 'code' || $key == 'ccode' || $key == 'id')
-                                    continue;
-                                $url1 .= '&' . $key . '=' . $value;
-                            }
-                            return $url_first . $ccode . $url1;
-                        } else {
-                            return;
-                        }
-                    case 'cat':
-                        $url_filter = '';
-                        foreach ($array_params as $i=>$item){
-                            if($i!='module' && $i!='view' && $i!='ccode' && $i!='cid' && $i!='Itemid'){
-                                if (isset($array_params[$i]) ? $array_params[$i] : '') {
-                                    $url_filter = '/' . $array_params[$i];
-                                }
-                            }
-                        }
-
-                        if($url_filter != '')
-                            $url_filter = '/filter'.$url_filter;
-
-                        $ccode = isset($array_params['ccode']) ? $array_params['ccode'] : '';
-                        $filter = isset($array_params['filter']) ? $array_params['filter'] : '';
-
-                        return $url_first . $ccode . $url_filter;
-                    case 'compare':
-                        foreach ($array_params as $key => $value) {
-                            if ($key == 'module' || $key == 'view' || $key == 'Itemid')
-                                continue;
-                            $url1 .= '&' . $key . '=' . $value;
-                        }
-//                        $cid = isset($array_params['cid']) ? $array_params['cid'] : '';
-                        $code = isset($array_params['code']) ? $array_params['code'] : '';
-                        $code_compare = isset($array_params['code_compare']) ? $array_params['code_compare'] : '';
-//                        return $url_first . 'so-sanh-san-pham/' . $cid . '.html' . $url1;
-                        return $url_first . 'so-sanh/' . $code . '-vs-' . $code_compare;
-                    case 'search':
-                        $keyword = isset($array_params['keyword']) ? $array_params['keyword'] : '';
-                        $url = URL_ROOT . 'tim-kiem';
-                        if ($keyword) {
-                            $url .= '/' . $keyword;
-                        }
-                        return $url;
-                    case 'hotdeal':
-                        return $url_first . 'xa-hang';
-                    case 'sales':
-                        return $url_first . 'sales';
-                    case 'promotion':
-                        return $url_first . 'khuyen-mai.html';
-                    case 'cart':
-                        switch ($task) {
-                            case 'eshopcart2':
-                                return $url_first . 'gio-hang.html';
-                            case 'baokimapi':
-                                $id = isset($array_params['id']) ? $array_params['id'] : 0;
-                                return $url_first . 'thanh-toan-bao-kim-' . $id;
-                            case 'webhooks':
-                                $id = isset($array_params['id']) ? $array_params['id'] : 0;
-                                return $url_first . 'webhooks-baokim-' . $id;
-                            case 'webhooks_kredivo':
-                                $id = isset($array_params['id'])
-                                    ? $array_params['id'] : 0;
-                                return $url_first . 'webhooks-kredivo-' . $id;
-                            case 'order':
-                                return $url_first . 'don-hang.html';
-                            case 'finished':
-                                $id = isset($array_params['id']) ? $array_params['id'] : 0;
-                                return $url_first . 'ket-thuc-don-hang-' . $id;
-                            default:
-                                return $url_first . $url;
-                        }
-                    case 'zalo_api':
-                        switch ($task) {
-                            case 'auth':
-                                return $url_first . 'auth';
-                            default:
-                                return $url_first . 'zalo-api';
-                        }
-                    case 'api':
-                        switch ($task) {
-                            case 'products_sub':
-                                return $url_first . 'api-price-sub';
-                            default:
-                                return $url_first . 'api-price';
-                        }
-                    case 'instalment':
-                        $code = isset($array_params['code']) ? $array_params['code'] : '';
-                        $id = isset($array_params['id']) ? $array_params['id'] : 0;
-                        switch ($task) {
-                            case 'success':
-                                return $url_first . 'ket-thuc-tra-gop-' . $id;
-                            case 'webhooks':
-                                return $url_first . 'webhooks-' . $id;
-//                                return $url_first . 'webhooks.html';
-                            default:
-                                return $url_first . 'tra-gop/' . $code;
-                        }
-                    case 'home':
-                        foreach ($array_params as $key => $value) {
-                            if ($key == 'module' || $key == 'view' || $key == 'Itemid' || $key == 'code' || $key == 'ccode' || $key == 'id')
-                                continue;
-                            $url1 .= '&' . $key . '=' . $value;
-                        }
-                        return $url_first . 'store.html' . $url1;
-                    default:
-                        return $url_first . $url;
+                        return URL_ROOT .'thong-bao';
                 }
                 break;
             case 'news':
@@ -352,17 +176,6 @@ class FSRoute
                         return $url_first . $url;
                 }
                 break;
-            case 'sales_offline':
-                switch ($view) {
-                    case 'cat':
-                        $ccode = isset($array_params['ccode']) ? $array_params['ccode'] : '';
-                        return $url_first . 'khuyen-mai-hot/' . $ccode;
-                    case 'home':
-                        return $url_first . 'khuyen-mai-hot';
-                    default:
-                        return $url_first . $url;
-                }
-                break;
             case 'contents':
                 switch ($view) {
                     case 'cat':
@@ -373,60 +186,14 @@ class FSRoute
                         return $url_first . $ccode;
                 }
                 break;
-            case 'partners':
-                return $url_first . 'doi-tac.html';
-                break;
-            case 'videos':
-                switch ($view) {
-                    case 'cat':
-                        return $url_first . 'videos';
-                    case 'video':
-                        $id = isset($array_params['id']) ? $array_params['id'] : '';
-                        $code = isset($array_params['code']) ? $array_params['code'] : '';
-                        return $url_first . $code . '-v' . $id;
-                }
-                break;
             case 'sitemap':
                 return $url_first . 'site-map.html';
             case 'users':
                 switch ($view) {
                     case 'users':
                         switch ($task) {
-                            case 'login':
-                                $url1 = '';
-                                foreach ($array_params as $key => $value) {
-                                    if ($key == 'module' || $key == 'view' || $key == 'Itemid' || $key == 'task')
-                                        continue;
-                                    $url1 .= '&' . $key . '=' . $value;
-                                }
-
-                                return URL_ROOT . 'dang-nhap' . $url1;
-                            case 'register':
-                                $url1 = '';
-                                foreach ($array_params as $key => $value) {
-                                    if ($key == 'module' || $key == 'view' || $key == 'Itemid' || $key == 'task')
-                                        continue;
-                                    $url1 .= '&' . $key . '=' . $value;
-                                }
-                                return URL_ROOT . 'dang-ky.html' . $url1;
-                            case 'forget':
-                                return URL_ROOT . 'quen-mat-khau.html';
-                            case 'user_info':
-                                return URL_ROOT . 'thong-tin-tai-khoan.html';
                             case 'logout':
-                                return URL_ROOT . 'dang-xuat.html';
-                            case 'login_register':
-                                return URL_ROOT . 'dang-ky-dang-nhap.html';
-                            case 'logged':
-                                return URL_ROOT . 'thanh-vien.html';
-                            case 'accumulation':
-                                return URL_ROOT . 'chi-tieu-tich-luy.html';
-                            case 'management':
-                                return URL_ROOT . 'quan-ly-don-hang.html';
-                            case 'warranty':
-                                return URL_ROOT . 'tra-cuu-bao-hanh.html';
-                            case 'repair':
-                                return URL_ROOT . 'tra-cuu-sua-chua.html';
+                                return URL_ROOT . 'logout';
                             default:
                                 return URL_ROOT . $url;
                         }

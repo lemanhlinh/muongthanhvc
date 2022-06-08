@@ -614,9 +614,9 @@
 		function save($row = array(),$use_mysql_real_escape_string = 1){
 			$id = FSInput::get('id',0,'int');
 
-            $memcache = new Memcache();
-            $memcache->addServer('127.0.0.1', 11211);
-            $memcache->flush();
+//            $memcache = new Memcache();
+//            $memcache->addServer('127.0.0.1', 11211);
+//            $memcache->flush();
 
 
 			if(!$id)
@@ -879,9 +879,9 @@
 				if(isset($row['tablename']) && !empty($row['tablename']))
 					$arr_table_name_changed[] = $row['tablename'];
 			}
-            $memcache = new Memcache();
-            $memcache->addServer('127.0.0.1', 11211);
-            $memcache->flush();
+//            $memcache = new Memcache();
+//            $memcache->addServer('127.0.0.1', 11211);
+//            $memcache->flush();
 			if($id)
 				return $id;
 			else if($rows)

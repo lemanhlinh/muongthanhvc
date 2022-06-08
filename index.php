@@ -17,11 +17,6 @@ if (USE_BENMARCH) {
 if (!isset($_SESSION)) {
     session_start();
 }
-$time = time() + 60 * 60 * 24 * 30;
-if (!isset($_COOKIE['city_store'])) {
-    setcookie('city_store', 1, $time, '/');
-    setcookie('city_store_name', 'Hà Nội', $time, '/');
-}
 include("includes/config.php");
 include("libraries/database/pdo.php");
 $db = new FS_PDO();
@@ -163,7 +158,11 @@ if ($raw) {
     if (!$cache_time || !$use_cache) {
         $main_content = loadMainContent($module, $view, $task, 0);
         ob_start();
-        include_once("templates/" . $tmpl->tmpl_name . "/index.php");
+        if(empty($_COOKIE['user_id'])) {
+            include_once("templates/" . $tmpl->tmpl_name . "/login.php");
+        }else{
+            include_once("templates/" . $tmpl->tmpl_name . "/index.php");
+        }
         $all_website_content = ob_get_contents();
         ob_end_clean();
 

@@ -1,8 +1,8 @@
 $(document).ready(function() {
     $.widget.bridge('uibutton', $.ui.button);
-    $('#example').DataTable({
-        responsive: true
-    });
+    // $('#example').DataTable({
+    //     responsive: true,
+    // });
 })
 function share_facebook()
 {

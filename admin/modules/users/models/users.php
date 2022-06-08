@@ -31,6 +31,7 @@ class UsersModelsUsers extends FSModels {
 		// ordering
 		$ordering = "";
 		$where = "  ";
+        $task = FSInput::get('task','list_group_1');
 		if(isset($_SESSION[$this -> prefix.'sort_field']))
 		{
 			$sort_field = $_SESSION[$this -> prefix.'sort_field'];
@@ -49,9 +50,27 @@ class UsersModelsUsers extends FSModels {
 			if($_SESSION[$this -> prefix.'keysearch'] )
 			{
 				$keysearch = $_SESSION[$this -> prefix.'keysearch'];
-				$where .= " AND ( a.username LIKE '%".$keysearch."%' OR a.id LIKE '%".$keysearch."%' )";
+				$where .= " AND ( a.username LIKE '%".$keysearch."%' OR a.id LIKE '%".$keysearch."%' OR a.email LIKE '%".$keysearch."%' OR a.full_name LIKE '%".$keysearch."%' OR a.phone LIKE '%".$keysearch."%' )";
 			}
 		}
+
+        if (isset ( $_SESSION [$this->prefix . 'filter0'] )) {
+            $filter = $_SESSION [$this->prefix . 'filter0'];
+            if ($filter) {
+                $where .= ' AND a.position_group = ' . $filter . ' ';
+            }
+        }
+
+        if (($task)){
+            if ($task == 'list_group_1'){
+                $where .= " AND group_company = 1 ";
+            }else if ($task == 'list_group_2'){
+                $where .= " AND group_company = 2 ";
+            }else{
+                $where .= " AND group_company = 0 ";
+            }
+        }
+
 		$query = " SELECT a.*
 					  FROM 
 					  ".$this -> table_name." AS a

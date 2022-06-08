@@ -784,7 +784,11 @@ class TemplateHelper
         $html_footer .= '<input type="hidden" value="' . ($i + 1) . '" name="total">';
         $html_footer .= '<input type="hidden" value="' . FSInput::get('page', 0, 'int') . '" name="page">';
         $html_footer .= '<input type="hidden" value="' . $html_field_change . '" name="field_change">';
-        $html_footer .= '<input type="hidden" value="" name="task">';
+        if (count($params)) {
+            foreach ($params as $name => $param) {
+                $html_footer .= '<input type="hidden" value="' . $param . '" name="' . $name . '">';
+            }
+        }
         $html_footer .= '<input type="hidden" value="0" name="boxchecked">';
         $html_footer .= '<input type="hidden" value="' . $page . '" name="page">';
         $html_footer .= '<input type="hidden" value="' . $limit . '" name="limit">';

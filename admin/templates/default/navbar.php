@@ -57,6 +57,12 @@
 //                ?>
 <!--           </ul>-->
 <!--       </li>-->
+        <li>
+            <a href="index.php?module=users&view=users&task=add">
+                <i class="fa fa-plus"></i> Thêm mới user
+            </a>
+
+        </li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>

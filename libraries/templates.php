@@ -48,12 +48,10 @@ class Templates
 //        }else {
 //            array_push($this->style, URL_ROOT . "templates/" . TEMPLATE . "/css/bootstraphome.css" . VERSION);
 //        }
-//        array_push($this->script_bottom, URL_ROOT . "libraries/jquery/owlcarousel/owl.carousel.min.js" . VERSION);
-//        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/jquery.lazyloadxt.js" . VERSION);
-//        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/bootstrap.min.js" . VERSION);
-//        array_push($this->script_bottom, URL_ROOT . "blocks/mainmenu/assets/js/nav.jquery.min.js" . VERSION);
-//        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/main.js" . VERSION);
-//        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/form.js" . VERSION);
+        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/plugin/jquery.min.js" . VERSION);
+        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/plugin/jquery-ui.min.js" . VERSION);
+        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/plugin/datatables.min.js" . VERSION);
+        array_push($this->script_bottom, URL_ROOT . "templates/" . TEMPLATE . "/js/plugin/bootstrap.bundle.min.js" . VERSION);
         $display_position = FSInput::get('tmpl', 0, 'int');
         $this->display_position = $display_position;
     }

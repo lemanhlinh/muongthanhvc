@@ -7,7 +7,7 @@ function login(){
     
 	$query = 'SELECT u.id, u.username, u.email
                 FROM fs_users AS u
-                WHERE published = 1 AND  u.username = \''.$username.'\' AND u.password = \''.$password.'\'
+                WHERE published = 1 AND group_company = 0 AND  u.username = \''.$username.'\' AND u.password = \''.$password.'\'
                 LIMIT 1';
                 
 	$user = $db->getObject($query);

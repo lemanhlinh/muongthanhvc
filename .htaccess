@@ -4,21 +4,18 @@ RewriteRule ^robots.txt - [L]
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^([^/.]+)\.didongthongminh\.local$
 RewriteCond %1 !^(www|ftp|mail)$ [NC]
-RewriteRule ^(.*)$ index.php?module=template&alias=%1&raw=1 [L]
+#RewriteRule ^(.*)$ index.php?module=template&alias=%1&raw=1 [L]
 RewriteCond %{HTTP_HOST} ^www\.(.*)
 RewriteRule (.*) http://%1/$1 [R=301,L]
 RewriteRule https://%1//$1 https://%1/$1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(index.php|index.html)$ index.php?module=products&view=home&Itemid=1&lang=vi[L]
+RewriteRule ^(index.php|index.html)$ index.php?module=home&view=home&Itemid=1&lang=vi[L]
 RewriteRule ^&tmpl=1$ index.php?module=home&view=home&Itemid=1&lang=vi&tmpl=1[L]
 RewriteRule ^$ index.php?module=home&view=home&Itemid=1&lang=vi&%{QUERY_STRING} [L]
 RewriteRule ^$ index.php?lang=vi [L]
-RewriteRule ^en$ index.php?module=products&view=home&Itemid=1&lang=en [L]
-
-#contact
-RewriteRule ^he-thong-cua-hang$ index.php?module=contact&view=contact&Itemid=12 [L]
+#RewriteRule ^en$ index.php?module=products&view=home&Itemid=1&lang=en [L]
 
 RewriteRule ^sitemap(.*) sitemap.php [L]
 RewriteRule ^info(.*) info.php [L]
@@ -32,10 +29,14 @@ RewriteRule ^feeds$ rss.php [L]
 #genarate sitemap
 RewriteRule ^genarate_sitemap.html index.php?module=sitemap_auto&view=sitemap_auto&raw=1 [L]
 
-#new
-RewriteRule ^tin-tuc/([^/]*)(-page([0-9]*))$ index.php?module=news&view=cat&ccode=$1&Itemid=3&page=$3 [L]
-RewriteRule ^tin-tuc/([^/]*)(-page([0-9]*))/$ index.php?module=news&view=cat&ccode=$1&Itemid=3&page=$3 [L]
-RewriteRule ^tin-tuc/([^/]*)$ index.php?module=news&view=cat&ccode=$1&Itemid=3 [L]
-RewriteRule ^tin-tuc/([^/]*)/$ index.php?module=news&view=cat&ccode=$1&Itemid=3 [L]
-RewriteRule ^([^/]*)/([^/]*)-n([0-9]*)$ index.php?module=news&view=news&ccode=$1&code=$2&Itemid=4 [L]
-RewriteRule ^([^/]*)/([^/]*)-n([0-9]*)/$ index.php?module=news&view=news&ccode=$1&code=$2&Itemid=4 [L]
+#members
+RewriteRule ^logout$ index.php?module=users&view=users&task=logout&Itemid=3 [L]
+
+#voucher
+RewriteRule ^thong-bao$ index.php?module=vouchers&view=vouchers&Itemid=3 [L]
+RewriteRule ^de-xuat-phat-hanh$ index.php?module=vouchers&view=vouchers&task=create&Itemid=3 [L]
+RewriteRule ^vouchers-cho-phe-duyet$ index.php?module=vouchers&view=vouchers&task=approve_waiting&Itemid=3 [L]
+RewriteRule ^vouchers-da-duyet$ index.php?module=vouchers&view=vouchers&task=approve&Itemid=3 [L]
+RewriteRule ^vouchers-het-han$ index.php?module=vouchers&view=vouchers&task=expired&Itemid=3 [L]
+RewriteRule ^vouchers-tra-ve$ index.php?module=vouchers&view=vouchers&task=return_voucher&Itemid=3 [L]
+RewriteRule ^vouchers-khong-duyet$ index.php?module=vouchers&view=vouchers&task=no_approve&Itemid=3 [L]

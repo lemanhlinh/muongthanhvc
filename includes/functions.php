@@ -813,6 +813,24 @@ function format_date($str_time){
     $date = date('d-m-Y',$time);
     return $hour.'h'.$minute.' ngày '.$date;
 }
+//Output: 2-3-2011
+function format_date3($str_time){
+    $time = strtotime($str_time);
+    $hour = date('H',$time);
+    $minute = date('i',$time);
+    $date = date('d-m-Y',$time);
+    return $date;
+}
+/*
+ * Input: d/m/Y
+ * Output: Y-m-d
+ */
+function format_date2($str_time){
+    $str_time = date_create($str_time);
+    $str_time = date_format($str_time,"Y-m-d");
+    return $str_time;
+}
+
 function encodeURIComponent($str) {
     $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
     return strtr(rawurlencode($str), $revert);

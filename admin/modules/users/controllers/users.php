@@ -37,14 +37,51 @@
 		}
 		function edit()
 		{
-			$cds = FSInput::get('id',array(),'array');
-			$cid = $cds[0];
-			$model = $this -> model;
-			$data = $model->get_record_by_id($cid);
-	//		$groups_all = $model->getUserGroupsAll();
-	//		$groups_contain_user = $model->getUserGroupsByUser();
-			include 'modules/'.$this->module.'/views/users/detail.php';
+            $cds = FSInput::get('id',array(),'array');
+            $cid = $cds[0];
+            $model = $this -> model;
+            $data = $model->get_record_by_id($cid);
+            if ($data->group_company == 1){
+                $this->params_form = [
+                    'task' => 'list_group_1',
+                ];
+            }else{
+                $this->params_form = [
+                    'task' => 'list_group_2',
+                ];
+            }
+            //		$groups_all = $model->getUserGroupsAll();
+            //		$groups_contain_user = $model->getUserGroupsByUser();
+            include 'modules/'.$this->module.'/views/users/detail.php';
 		}
+
+		function list_group_1(){
+            parent::display();
+            $sort_field = $this -> sort_field;
+            $sort_direct = $this -> sort_direct;
+
+            $model  = $this -> model;
+            $list = $model->get_data('');
+            $task = FSInput::get('task');
+
+            // call views
+            $pagination = $model->getPagination('');
+            include 'modules/'.$this->module.'/views/users/list.php';
+        }
+
+        function list_group_2(){
+            parent::display();
+            $sort_field = $this -> sort_field;
+            $sort_direct = $this -> sort_direct;
+//			$select_cat = FSInput::get('select_cat');
+
+            $model  = $this -> model;
+            $list = $model->get_data('');
+            $task = FSInput::get('task');
+            // call views
+            $pagination = $model->getPagination('');
+            include 'modules/'.$this->module.'/views/users/list.php';
+        }
 		
 		function save()
 		{

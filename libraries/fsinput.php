@@ -56,17 +56,17 @@ class  FSInput
 				break;
 		}
 
-		if(defined('IS_FRONTEND') && IS_FRONTEND){
-			$value = FSInput::clean($value);
-			$value = FSInput::xss_clean($value);
+//		if(defined('IS_FRONTEND') && IS_FRONTEND){
+//			$value = FSInput::clean($value);
+//			$value = FSInput::xss_clean($value);
 			// $value = addslashes($value);
-			$value = str_replace('"','', $value);
+//			$value = str_replace('"','', $value);
 			// $value = htmlentities($value, ENT_QUOTES, "UTF-8");
 			// if ($varname == 'id' || $varname == 'cid' || $varname == 'field' || $varname == 'department' || $varname == 'type' || $varname == 'position') {
 			// 	$value = "'".$value."'";
 			// }		
-		}
-		else
+//		}
+//		else
 			$value = FSInput::clean2($value);
 		return $value;
 	}
