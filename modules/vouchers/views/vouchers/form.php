@@ -199,7 +199,7 @@ $tmpl->addScript('form','modules/vouchers/assets/js');
                                         <div class="col-sm-4">
                                             <div class="form-group clearfix">
                                                 <div class="icheck-warning d-inline">
-                                                    <input type="radio" id="release_form<?php echo $k; ?>" value="<?php echo $k; ?>" name="release_form" <?php echo $k==1?'checked':''; ?>>
+                                                    <input type="checkbox" id="release_form<?php echo $k; ?>" value="<?php echo $k; ?>" name="release_form[]" <?php echo $k==1?'checked':''; ?>>
                                                     <label for="release_form<?php echo $k; ?>">
                                                         <?php echo $item; ?>
                                                     </label>

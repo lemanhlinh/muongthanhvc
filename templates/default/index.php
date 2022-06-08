@@ -34,16 +34,26 @@ $tmpl->addScript('main');
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light justify-content-md-between">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-align-left"></i></a>
             </li>
         </ul>
+        <div>
+            <?php echo GROUP_COMPANY[$_COOKIE['group_company']]; ?> /
+            <?php
+                if ($_COOKIE['group_company'] == 1){
+                    echo POSITION_GROUP_1[$_COOKIE['position_group']];
+                }else if ($_COOKIE['group_company'] == 2){
+                    echo POSITION_GROUP_2[$_COOKIE['position_group']];
+                }
+            ?>
+        </div>
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">

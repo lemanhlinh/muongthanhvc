@@ -31,7 +31,9 @@
             $row['name_camp'] = FSInput::get('name_camp');
             $row['price_accounting'] = FSInput::get('price_accounting');
 
-            $row['release_form'] = FSInput::get('release_form');
+            $release_form = FSInput::get('release_form',null,'array');
+            $release_form = implode(',',$release_form);
+            $row['release_form'] = $release_form;
 
             $row['price_voucher'] = FSInput::get('price_voucher');
             $row['purpose'] = FSInput::get('purpose');
