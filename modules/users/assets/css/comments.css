@@ -1,0 +1,11 @@
+.menu_users{border:1px solid #ebeef2;border-radius:4px;padding-bottom:8px;padding-top:8px;width:20%}
+.comments{width:80%}
+.menu_users .title_menu{background: url("../images/icon-title-menu.png") no-repeat left 5px;border-bottom:1px solid #ebeef2;margin-bottom:10px;padding-bottom:2px;position:relative;}
+.menu_users .title_menu span{border-bottom:1px solid #ebeef2;display:block;font-size:16px;font-weight:bold;padding:8px 0px 8px 32px;width:100%;text-transform:uppercase}
+.menu_users .title_menu i{background:url("../images/arrow-bottom.png") no-repeat;bottom:-15px;left:50%;margin-left:-2px;padding:0 10px;position:absolute;}
+.menu_users .menu-item{border-bottom:1px solid #f7f7f7;padding:8px 0;font-size:15px;}
+.menu_users .menu-item-last{border-bottom:none;}
+.menu_users .menu-item:hover a{color:#0090d0;}
+.comments h1{border-bottom:1px solid #ebeef2;padding-bottom:2px;margin-top:14px}
+.comments h1 span{border-bottom:1px solid #ebeef2;display:block;font-size:18px;padding-bottom:8px;width:100%;}
+.comments ._item ._message a{color: #FF8B00;font-weight: bold;}
