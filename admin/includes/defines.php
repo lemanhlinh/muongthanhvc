@@ -76,6 +76,28 @@ define('TYPE_VOUCHER', [
     VOUCHER_4 => 'Các loại Voucher khác phát sinh',
 ]);
 
+define('RELEASE_FORM_1',1);
+define('RELEASE_FORM_2',2);
+define('RELEASE_FORM_3',3);
+define('RELEASE_FORM',[
+    RELEASE_FORM_1 => 'Email',
+    RELEASE_FORM_2 => 'Điện thoại',
+    RELEASE_FORM_3 => 'In phôi',
+]);
+
+define('STATUS_VOUCHER_1',1);
+define('STATUS_VOUCHER_2',2);
+define('STATUS_VOUCHER_3',3);
+define('STATUS_VOUCHER_4',4);
+define('STATUS_VOUCHER_5',5);
+define('STATUS_VOUCHER',[
+    STATUS_VOUCHER_1 => ['function' => 'approve_waiting', 'name' => 'Chờ phê duyệt'],
+    STATUS_VOUCHER_2 => ['function' => 'approve', 'name' => 'Đã phê duyệt'],
+    STATUS_VOUCHER_3 => ['function' => 'expired', 'name' => 'Hết hạn'],
+    STATUS_VOUCHER_4 => ['function' => 'return_voucher', 'name' => 'Trả về'],
+    STATUS_VOUCHER_5 => ['function' => 'no_approve', 'name' => 'Không duyệt'],
+]);
+
 
 $positions = array(
     'top_default' => 'Top',

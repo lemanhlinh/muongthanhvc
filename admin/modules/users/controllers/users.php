@@ -41,15 +41,15 @@
             $cid = $cds[0];
             $model = $this -> model;
             $data = $model->get_record_by_id($cid);
-            if ($data->group_company == 1){
-                $this->params_form = [
-                    'task' => 'list_group_1',
-                ];
-            }else{
-                $this->params_form = [
-                    'task' => 'list_group_2',
-                ];
-            }
+//            if ($data->group_company == 1){
+//                $this->params_form = [
+//                    'task' => 'list_group_1',
+//                ];
+//            }else{
+//                $this->params_form = [
+//                    'task' => 'list_group_2',
+//                ];
+//            }
             //		$groups_all = $model->getUserGroupsAll();
             //		$groups_contain_user = $model->getUserGroupsByUser();
             include 'modules/'.$this->module.'/views/users/detail.php';
