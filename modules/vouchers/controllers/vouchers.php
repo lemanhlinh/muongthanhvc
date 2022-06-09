@@ -61,7 +61,7 @@ class VouchersControllersVouchers extends FSControllers
     function approve_waiting()
     {
         $model = $this->model;
-        $status = 1;
+        $status = 2;
         $list  = $model->getListVoucher($status);
         include 'modules/' . $this->module . '/views/' . $this->view . '/approve_waiting.php';
     }
