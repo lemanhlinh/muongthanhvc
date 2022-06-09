@@ -1,6 +1,7 @@
 <?php
 	class Sample_vouchersControllersSample_vouchers extends Controllers
 	{
+        var $module;
 		function __construct()
 		{
 			$this->view = 'sample_vouchers' ;

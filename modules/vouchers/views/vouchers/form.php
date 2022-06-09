@@ -262,19 +262,16 @@ $tmpl->addScript('form','modules/vouchers/assets/js');
                 <hr>
                 <div class="content">
                     <h3>Mẫu voucher</h3>
-                    <div class="row">
+                    <div class="row" id="voucher_for_type">
+                        <?php foreach ($list_sample_pdf as $k => $item ){ ?>
                         <div class="col-sm-3">
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input custom-control-input-warning" type="radio" id="sample_pdf_id1" name="sample_pdf_id" checked>
-                                <label for="sample_pdf_id1" class="custom-control-label">Mẫu voucher số 1</label>
+                                <input class="custom-control-input custom-control-input-warning" type="radio" id="sample_pdf_id<?php echo $k; ?>" value="<?php echo $item->id; ?>" name="sample_pdf_id" <?php echo ($k==0)?'checked':'';?>>
+                                <label for="sample_pdf_id<?php echo $k; ?>" class="custom-control-label"><?php echo $item->name; ?></label>
+                                <img src="<?php echo URL_ROOT.str_replace('original', 'resized', $item->image); ?>" alt="" class="img-fluid">
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input custom-control-input-warning" type="radio" id="sample_pdf_id2" name="sample_pdf_id" >
-                                <label for="sample_pdf_id2" class="custom-control-label">Mẫu voucher số 2</label>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

@@ -739,9 +739,9 @@
 					$arr_table_name_changed[] = $row['tablename'];
 //				$this -> caculate_filter($arr_table_name_changed);
 			}
-            $memcache = new Memcache();
-            $memcache->addServer('127.0.0.1', 11211);
-            $memcache->flush();
+//            $memcache = new Memcache();
+//            $memcache->addServer('127.0.0.1', 11211);
+//            $memcache->flush();
 			return $id;
 		}
 		

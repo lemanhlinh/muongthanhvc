@@ -39,6 +39,7 @@
             $row['purpose'] = FSInput::get('purpose');
             $row['content_vi'] = FSInput::get('content_vi');
             $row['content_en'] = FSInput::get('content_en');
+            $row['sample_pdf_id'] = FSInput::get('sample_pdf_id');
             $row['group_company_id'] = $_COOKIE['group_company'];
             $row['position_group_id'] = $_COOKIE['position_group'];
             $row['sample_pdf_id'] = FSInput::get('sample_pdf_id');
@@ -50,21 +51,28 @@
             return $id;
         }
 
-        function getListVoucher()
+        function getListVoucher($status = 1)
         {
             $fs_table = FSFactory::getClass('fstable');
             $where = '';
-//            if($code){
-//                $where = " AND alias = '$code' ";
-//            } else {
-//                $id = FSInput::get('id',0,'int');
-//                if(!$id)
-//                    die('Not exist this url');
-//                $where = " AND id = '$id' ";
-//            }
+            $where .= " AND group_company_id = '".$_COOKIE['group_company']."' ";
+            $where .= " AND position_group_id = '".$_COOKIE['position_group']."' ";
             $query = " SELECT id,name_camp,number_release,type_voucher,price_accounting,price_voucher,created_time
 						FROM ".$fs_table -> getTable('fs_vouchers')." 
 						WHERE id != 0 ".$where." ORDER BY id DESC";
+            global $db;
+            $sql = $db->query($query);
+            $result = $db->getObjectList();
+            return $result;
+        }
+
+        function getListSampleVoucher($type_voucher = 1)
+        {
+            $fs_table = FSFactory::getClass('fstable');
+            $where = '';
+            $query = " SELECT id,name,file,image,type_voucher_id
+						FROM ".$fs_table -> getTable('fs_sample_pdf')." 
+						WHERE type_voucher_id = ".$type_voucher." ORDER BY id ASC";
             global $db;
             $sql = $db->query($query);
             $result = $db->getObjectList();

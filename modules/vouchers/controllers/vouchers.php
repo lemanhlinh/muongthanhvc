@@ -24,6 +24,7 @@ class VouchersControllersVouchers extends FSControllers
     function create()
     {
         $model = $this->model;
+        $list_sample_pdf  = $model->getListSampleVoucher();
         include 'modules/' . $this->module . '/views/' . $this->view . '/form.php';
     }
 
@@ -60,7 +61,8 @@ class VouchersControllersVouchers extends FSControllers
     function approve_waiting()
     {
         $model = $this->model;
-        $list  = $model->getListVoucher();
+        $status = 1;
+        $list  = $model->getListVoucher($status);
         include 'modules/' . $this->module . '/views/' . $this->view . '/approve_waiting.php';
     }
 
@@ -86,9 +88,34 @@ class VouchersControllersVouchers extends FSControllers
     function no_approve()
     {
         $model = $this->model;
-        $model = $this->model;
         $list  = $model->getListVoucher();
         include 'modules/' . $this->module . '/views/' . $this->view . '/no_approve.php';
+    }
+
+    function load_sample_voucher(){
+        $model = $this->model;
+        $type_voucher = FSInput::get('type_voucher');
+        $list_sample_pdf  = $model->getListSampleVoucher($type_voucher);
+        $data = array(
+            'error' => true,
+            'message' => '',
+            'html' => ''
+        );
+        $html = '';
+        if (!empty($list_sample_pdf)){
+            foreach ($list_sample_pdf as $k => $item){
+                $html .= '<div class="col-sm-3">';
+                    $html .= '<div class="custom-control custom-radio">';
+                        $html .= '<input class="custom-control-input custom-control-input-warning" type="radio" id="sample_pdf_id'.$k.'" value="'.$item->id.'" name="sample_pdf_id" '.(($k == 0)?'checked':'').'>';
+                        $html .= '<label for="sample_pdf_id'.$k.'" class="custom-control-label">'.$item->name.'</label>';
+                        $html .= '<img src="'.URL_ROOT.str_replace('original','resized',$item->image).'" class="img-fluid">';
+                    $html .= '</div>';
+                $html .= '</div>';
+            }
+        }
+        $data['html'] = $html;
+        $data['error'] = false;
+        echo json_encode($data);
     }
 }
 
