@@ -41,7 +41,7 @@ $tmpl->addScript('main');
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-align-left"></i></a>
             </li>
         </ul>
-        <div>
+        <div class="title-group-company">
             <?php echo GROUP_COMPANY[$_COOKIE['group_company']]; ?> /
             <?php
                 if ($_COOKIE['group_company'] == 1){
