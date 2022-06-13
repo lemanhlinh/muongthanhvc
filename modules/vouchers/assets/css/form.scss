@@ -1,0 +1,51 @@
+.content-form-voucher{
+  #create_form{
+    .top-type-voucher{
+      padding: 14px 0;
+      .title-type-voucher{
+        margin-right: 30px;
+      }
+      .list-type-voucher{
+        .item-type-voucher{
+          margin-right: 40px;
+          input[type="radio"]:checked+label{ color: #000 }
+          .custom-control-label{
+            font-weight: normal;
+            color: #C0C3C6;
+          }
+        }
+      }
+    }
+    .title-show-on-voucher{
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: #BFC5CB;
+    }
+    .content-show-on-voucher{
+      .label-title-input{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 132%;
+        /* or 18px */
+        /* black */
+        color: #3C3C3B;
+        min-height: 37px;
+        span{
+          color: rgba(0, 0, 0, 0.38);
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          display: block;
+        }
+      }
+      .label-title-input-child{
+        font-weight: normal;
+      }
+    }
+  }
+}
